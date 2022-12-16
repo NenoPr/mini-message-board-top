@@ -1,12 +1,17 @@
-<form method="POST" action="/new">
-    h1 Send Message
+head
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/index.css')
+    link(rel='stylesheet', href='/stylesheets/form.css')
+body
+    <form method="POST" action="/new" class="message-form">
+        h1 Send Message
 
-    p Sender
-    input(type="text", name="sender", value="David")
+        p Sender
+        input(type="text", name="sender", value="You")
 
-    p New Message
-    input(type="text", name="textMessage")
+        p New Message
+        textarea(name="textMessage", rows="5", required)
 
-    button(type="submit") Submit
-</form>
-a(href="/") Back to Messages
+        button(type="submit") Submit
+        button(onclick="location.href='/'", type="button" class="back") Back to Messages
+    </form>

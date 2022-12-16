@@ -1,0 +1,18 @@
+textarea {
+    resize: none;
+    max-width: 200%;
+    min-width: 300px;
+}
+button {
+    margin-top: 1rem;
+}
+.back {
+    margin-top: 5rem;
+    cursor: pointer;
+}
+.message-form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: .25rem;
+}

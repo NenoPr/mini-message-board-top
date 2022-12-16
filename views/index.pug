@@ -1,10 +1,43 @@
-extends layout
+//- extends layout
 
-block content
-  h1= title
-  each value, key in messages
-      p= value.user
-      p= value.text
-      p= value.added
-  a(href="/new") New Message 
+//- block content
+html 
+  head 
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/index.css')
+  body 
+    h1= title
+    div(class="messages-container")
+      - let sender = ""
+      - let date = ""
+      each value, key in messages
+        if value.added.split(" ")[0] !== date 
+          div(class="date-separator")= value.added.split(" ")[0]
+          - date = value.added.split(" ")[0]
+        if sender !== value.user
+          if value.user === "You"
+            div(class="message message-you")
+              div(class="message-sender")= value.user
+              div(class="message-wrapper message-wrapper-you")
+                div(class="message-text")= value.text
+                div(class="message-date")= value.added.split(" ")[1].slice(0, -3)
+          else 
+            div(class="message")
+              div(class="message-sender")= value.user
+              div(class="message-wrapper")
+                div(class="message-text")= value.text
+                div(class="message-date")= value.added.split(" ")[1].slice(0, -3)
+        else 
+          if value.user === "You"
+            div(class="message message-you")
+              div(class="message-wrapper message-wrapper-you")
+                div(class="message-text")= value.text
+                div(class="message-date")= value.added.split(" ")[1].slice(0, -3)
+          else
+            div(class="message")
+              div(class="message-wrapper")
+                div(class="message-text")= value.text
+                div(class="message-date")= value.added.split(" ")[1].slice(0, -3)
+        - sender = value.user
+    button(onclick="location.href='/new'", type="button") New Message
   
