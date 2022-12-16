@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  each value, key in messages
+      p= value.user
+      p= value.text
+      p= value.added
+  a(href="/new") New Message 
+  
